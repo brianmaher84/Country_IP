@@ -55,30 +55,27 @@ function getCurrentTabUrl(callback) {
     // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
-function updateImg(dataBlob, data) {
-    'use strict';
-
-    var img, table_body;
-    
-    // https://www.whatismyip.com/images/flags/se.png
-    img = "<img id=\"flagImg\" src=\"https://www.whatismyip.com/images/flags/" + data.countryCode.toLowerCase() + ".png\"/>";
-
-    table_body = img;
-    $.each(data, function (k, v) {
-        console.log(table_body);
-        table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
-    });
-    $("#GeoResults").html(table_body);
-    
-    updateExtensionIcon(dataBlob);
-}
-
-function createTable() {
+function createPopUpPage() {
     'use strict';
 
     $().fadeIn(2000);
 
-    callWebService(updateImg);
+    callWebService(function (dataBlob, data) {
+
+        var img, table_body;
+
+        // https://www.whatismyip.com/images/flags/se.png
+        img = "<img id=\"flagImg\" src=\"https://www.whatismyip.com/images/flags/" + data.countryCode.toLowerCase() + ".png\"/>";
+
+        table_body = img;
+        $.each(data, function (k, v) {
+            console.log(table_body);
+            table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
+        });
+        $("#GeoResults").html(table_body);
+
+        updateExtensionIcon(dataBlob);
+    });
 }
 
 
@@ -89,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     getCurrentTabUrl(function (url) {
 
-        console.log("creating table");
+        console.log("creating pop up page");
 
-        createTable();
+        createPopUpPage();
 
     }, function (errorMessage) {
         console.log('Error: ' + errorMessage);
