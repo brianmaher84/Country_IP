@@ -1,9 +1,11 @@
 /*globals console,chrome,$ */
+
 /**
  * Converts the Data Image URI to a Blob.
  *
  * @param {string} dataURI base64 data image URI.
  * @param {string} mimetype the image mimetype.
+ * @param {object} JSON object of data with IP info
  */
 function dataURIToBlob(dataURI, callback, data) {
     'use strict';
@@ -22,6 +24,10 @@ function dataURIToBlob(dataURI, callback, data) {
     xhr.send();
 }
 
+/**
+ * Updates the browser icon from the provided blob object
+ * @param {blob} blob representing the icon to set
+ */
 function updateExtensionIcon(dataBlob) {
     'use strict';
     
@@ -36,6 +42,10 @@ function updateExtensionIcon(dataBlob) {
     
 }
 
+/**
+ * calls the whatismyip.com JSON webservice to get the IP info
+ * @param callback a function to call when the data is retrieved
+ */
 function callWebService(callback) {
     'use strict';
     
@@ -45,7 +55,6 @@ function callWebService(callback) {
         var table_body, img, imgData, dataBlob, data;
 
         if (xhr.readyState === 4) {
-            // innerText does not let the attacker inject HTML elements.
             data = $.parseJSON(xhr.responseText);
             console.log(data);
 
@@ -56,6 +65,9 @@ function callWebService(callback) {
     xhr.send();
 }
 
+/**
+ * helper function for background tasks to call to retrieve web service details and update the extension icon
+ */
 function backgroundIconUpdater() {
     'use strict';
     
@@ -64,15 +76,15 @@ function backgroundIconUpdater() {
     });
 }
 
+/**
+ * Helper function to create the alarm handler.
+ */
 function createAlarmHandler() {
     'use strict';
     console.log("setting up alarm");
     
     var alarmInfo = { when: Date.now(), periodInMinutes: 0.5 };
-    
-    console.log(alarmInfo);
-    console.log(chrome);
-    console.log(chrome.alarms);
+
     chrome.alarms.create("background task", alarmInfo);
     
     chrome.alarms.onAlarm.addListener(function () {
