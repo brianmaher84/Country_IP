@@ -17,12 +17,13 @@ function createPopUpPage() {
 
         table_body = img;
         $.each(data, function (k, v) {
-            console.log(table_body);
             table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
         });
         $("#GeoResults").html(table_body);
 
         updateExtensionIcon(dataBlob);
+        
+        initMapInternal(data.lat, data.lon);
     });
 }
 

@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-
+    
   "name": "Country IP",
   "description": "This extension shows the country your current IP is in",
   "version": "1.0",
-
+    
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
@@ -19,6 +19,8 @@
     "tabs",
     "alarms",
     "http://ip-api.com/json/*",
-    "https://www.whatismyip.com/images/flags/*"
+    "https://www.whatismyip.com/images/flags/*",
+    "https://ajax.googleapis.com/",
+    "https://maps.googleapis.com/maps/api/*"
   ]
 }
