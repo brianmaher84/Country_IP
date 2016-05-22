@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "Country IP",
-    "description": "This extension shows the country your current IP is in",
+    "description": "This extension polls and displays the country your current IP is in",
     "version": "1.0",
     "icons":
     {
