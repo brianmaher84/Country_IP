@@ -3,7 +3,7 @@
 
     "name": "Country IP",
     "description": "This extension polls and displays the country your current IP is in",
-    "version": "1.0",
+    "version": "1.1",
     "icons":
     {
         "128": "images/ext_icon_128.png",
