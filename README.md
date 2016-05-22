@@ -7,3 +7,5 @@ This plugin is useful to ensure that your VPN is in the country you think it is 
 e.g. It can be useful if your VPN connection drops as most likely the country will be different and so the icon will change.
 
 Note: By default, the polling will occur approximately every 30 seconds.
+
+Icon image found on creative commons, Icon Artist: Nick Lee. Icon license: https://creativecommons.org/licenses/by/2.0/
