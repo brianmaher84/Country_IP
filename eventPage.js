@@ -83,7 +83,7 @@ function createAlarmHandler() {
     'use strict';
     console.log("setting up alarm");
     
-    var alarmInfo = { when: Date.now(), periodInMinutes: 0.5 };
+    var alarmInfo = { when: Date.now(), periodInMinutes: 1 };
 
     chrome.alarms.create("background task", alarmInfo);
     
